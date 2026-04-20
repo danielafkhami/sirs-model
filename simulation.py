@@ -31,8 +31,3 @@ def plot(values, method):
 plot(valuesSIRS, "SIRS Model Simulation : Runge-Kutta")
 plot(valuesSIR, "SIR Model Simulation : Runge-Kutta")
 plt.show()
-
-print(f'\nSusceptible RK: {round(valuesSIRS[-1, 0], 2)}')
-print(f'Infected ~ 0 RK: {valuesSIRS[-1, 1] < 1}')
-print(f'Recovered RK: {round(valuesSIRS[-1, 2], 2)}\n')
-print(f'\nSusceptible E: {round(valuesSIR[-1, 0], 2)}')
