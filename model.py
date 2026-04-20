@@ -17,6 +17,3 @@ def RungeKutta(y, dt, dydt, *args):
     k4 = dt * dydt(1.0 * y + k3 * dt, *args)
 
     return y + (k1 + 2.0 * k2 + 2.0 * k3 + 1.0 * k4) / 6
-
-def Euler(y, dt, dydt, *args):
-    return y + dt * dydt(y, args)
