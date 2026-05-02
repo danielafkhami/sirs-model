@@ -13,16 +13,17 @@ t_axis = np.linspace(0, T, steps)
 
 # Simulation
 for i in range(1, steps):
-    valuesSIRS[i] = RungeKutta(valuesSIRS[i-1], dt, sirs_system, beta, gamma, xi, N)
-    valuesSIR[i] = RungeKutta(valuesSIR[i-1], dt, sirs_system, beta, gamma, 0, N)
+    valuesSIRS[i] = RungeKutta(valuesSIRS[i-1], dt, sirs_system, beta, gamma, xi, birth, death)
+    valuesSIR[i] = RungeKutta(valuesSIR[i-1], dt, sirs_system, beta, gamma, 0, birth, death)
 
 def plot(values, method):
     plt.figure(figsize=(10, 6))
     plt.plot(t_axis, values[:, 0], label='Susceptible', color='blue')
     plt.plot(t_axis, values[:, 1], label='Infected', color='red')
     plt.plot(t_axis, values[:, 2], label='Recovered', color='green')
+    plt.plot(t_axis, values[:, 0] + values[:, 1] + values[:, 2], label='Population', color='black')
 
-    plt.title(f"{method}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}$")
+    plt.title(f"{method}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}, birth={birth}, death={death}$")
     plt.xlabel("Time (Days)")
     plt.ylabel("Population")
     plt.grid(alpha=0.3)

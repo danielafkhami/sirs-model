@@ -1,11 +1,12 @@
 import numpy as np
 
 # SIRS Differential Equations
-def sirs_system(y, beta, gamma, xi, N):
+def sirs_system(y, beta, gamma, xi, birth, death):
     S, I, R = y
-    dSdt = -beta * S * I / N + xi * R
-    dIdt = beta * S * I / N - gamma * I
-    dRdt = gamma * I - xi * R
+    N = S + I + R
+    dSdt = -beta * S * I / N + xi * R + birth - death * S / N
+    dIdt = beta * S * I / N - gamma * I - death * I / N
+    dRdt = gamma * I - xi * R - death * R / N
 
     return np.array([dSdt, dIdt, dRdt])
 
