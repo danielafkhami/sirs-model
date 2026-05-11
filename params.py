@@ -4,8 +4,9 @@ S0 = N - I0 - R0    # Initial susceptible
 beta = 0.3          # Infectious rate
 gamma = 0.1         # Recovery rate
 xi = 0.05           # Immunity loss rate
-lambd = 10          # birth rate
-mu = 12             # death rate
+lambd = 12          # birth rate
+mu = 10             # death rate
+
 
 T = 500             # Total time (days)
 dt = 0.1            # Time step

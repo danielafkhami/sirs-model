@@ -26,7 +26,8 @@ def plot(values, name, sirs, vd):
     plt.plot(t_axis, values[:, 0], label='Susceptible', color='blue')
     plt.plot(t_axis, values[:, 1], label='Infected', color='red')
     plt.plot(t_axis, values[:, 2], label='Recovered', color='green')
-    plt.plot(t_axis, values[:, 0] + values[:, 1] + values[:, 2], label='Population', color='black')
+    if (vd):
+        plt.plot(t_axis, values[:, 0] + values[:, 1] + values[:, 2], label='Population', color='black')
 
     title = f"{name}\n$\\beta={beta}, \\gamma={gamma}$"
     if (sirs and vd):
