@@ -21,7 +21,7 @@ for i in range(1, steps):
     values_SIRS[i] = RungeKutta(values_SIRS[i-1], dt, sirs_system, beta, gamma, xi, 0, 0)
     values_SIR[i] = RungeKutta(values_SIR[i-1], dt, sirs_system, beta, gamma, 0, 0, 0)
 
-def plot(values, method, sirs, vd):
+def plot(values, title, sirs, vd):
     plt.figure(figsize=(10, 6))
     plt.plot(t_axis, values[:, 0], label='Susceptible', color='blue')
     plt.plot(t_axis, values[:, 1], label='Infected', color='red')
