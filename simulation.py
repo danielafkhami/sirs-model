@@ -4,17 +4,17 @@ from model import *
 
 steps = int(T / dt)
 
-valuesSIRS = np.zeros((steps, 3))
-valuesSIR = np.zeros((steps, 3))
-valuesSIRS[0] = [S0, I0, R0]
-valuesSIR[0] = [S0, I0, R0]
+values_SIRS_VD = np.zeros((steps, 3))
+values_SIR_VD = np.zeros((steps, 3))
+values_SIRS_VD[0] = [S0, I0, R0]
+values_SIR_VD[0] = [S0, I0, R0]
 
 t_axis = np.linspace(0, T, steps)
 
 # Simulation
 for i in range(1, steps):
-    valuesSIRS[i] = RungeKutta(valuesSIRS[i-1], dt, sirs_system, beta, gamma, xi, lambd, mu)
-    valuesSIR[i] = RungeKutta(valuesSIR[i-1], dt, sirs_system, beta, gamma, 0, lambd, mu)
+    values_SIRS_VD[i] = RungeKutta(values_SIRS_VD[i-1], dt, sirs_system, beta, gamma, xi, lambd, mu)
+    values_SIR_VD[i] = RungeKutta(values_SIR_VD[i-1], dt, sirs_system, beta, gamma, 0, lambd, mu)
 
 def plot(values, method):
     plt.figure(figsize=(10, 6))
@@ -29,6 +29,6 @@ def plot(values, method):
     plt.grid(alpha=0.3)
     plt.legend()
 
-plot(valuesSIRS, "SIRS Model Simulation : Runge-Kutta")
-plot(valuesSIR, "SIR Model Simulation : Runge-Kutta")
+plot(values_SIRS_VD, "SIRS Model Simulation : Runge-Kutta")
+plot(values_SIR_VD, "SIR Model Simulation : Runge-Kutta")
 plt.show()
