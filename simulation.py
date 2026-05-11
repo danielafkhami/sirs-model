@@ -28,13 +28,13 @@ def plot(values, title, sirs, vd):
     plt.plot(t_axis, values[:, 2], label='Recovered', color='green')
     plt.plot(t_axis, values[:, 0] + values[:, 1] + values[:, 2], label='Population', color='black')
 
-    title = f"{method}\n$\\beta={beta}, \\gamma={gamma}$"
+    title = f"{title}\n$\\beta={beta}, \\gamma={gamma}$"
     if (sirs and vd):
-        title = f"{method}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}, \\lambda={lambd}, \\mu={mu}$"
+        title = f"{title}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}, \\lambda={lambd}, \\mu={mu}$"
     elif (sirs):
-        title = f"{method}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}$"
+        title = f"{title}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}$"
     elif (vd):
-        title = f"{method}\n$\\beta={beta}, \\gamma={gamma}, \\lambda={lambd}, \\mu={mu}$"
+        title = f"{title}\n$\\beta={beta}, \\gamma={gamma}, \\lambda={lambd}, \\mu={mu}$"
 
     plt.title(title)
     plt.xlabel("Time (Days)")
