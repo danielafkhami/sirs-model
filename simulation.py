@@ -21,20 +21,20 @@ for i in range(1, steps):
     values_SIRS[i] = RungeKutta(values_SIRS[i-1], dt, sirs_system, beta, gamma, xi, 0, 0)
     values_SIR[i] = RungeKutta(values_SIR[i-1], dt, sirs_system, beta, gamma, 0, 0, 0)
 
-def plot(values, title, sirs, vd):
+def plot(values, name, sirs, vd):
     plt.figure(figsize=(10, 6))
     plt.plot(t_axis, values[:, 0], label='Susceptible', color='blue')
     plt.plot(t_axis, values[:, 1], label='Infected', color='red')
     plt.plot(t_axis, values[:, 2], label='Recovered', color='green')
     plt.plot(t_axis, values[:, 0] + values[:, 1] + values[:, 2], label='Population', color='black')
 
-    title = f"{title}\n$\\beta={beta}, \\gamma={gamma}$"
+    title = f"{name}\n$\\beta={beta}, \\gamma={gamma}$"
     if (sirs and vd):
-        title = f"{title}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}, \\lambda={lambd}, \\mu={mu}$"
+        title = f"{name}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}, \\lambda={lambd}, \\mu={mu}$"
     elif (sirs):
-        title = f"{title}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}$"
+        title = f"{name}\n$\\beta={beta}, \\gamma={gamma}, \\xi={xi}$"
     elif (vd):
-        title = f"{title}\n$\\beta={beta}, \\gamma={gamma}, \\lambda={lambd}, \\mu={mu}$"
+        title = f"{name}\n$\\beta={beta}, \\gamma={gamma}, \\lambda={lambd}, \\mu={mu}$"
 
     plt.title(title)
     plt.xlabel("Time (Days)")
